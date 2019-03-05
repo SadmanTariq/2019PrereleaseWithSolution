@@ -16,8 +16,7 @@
 
 # ------TASK 1------
 
-# Dont u dare fucking delete this part!!1
-print("This solution is created by Sadman Tariq.")
+print("This solution is created by Sadman Tariq.\n")
 
 temp_cond = True  # Temporary placeholder
 while temp_cond:
