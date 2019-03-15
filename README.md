@@ -1,4 +1,4 @@
-This solution is made in python3. All three tasks are in `main.py`. Install python 3 then download the file to run.
+This solution is made in python3. All three tasks are in `main.py`. Install the [latest version of python 3](https://www.python.org/downloads/) then download the file to run.
 
 # s19_pm22
 
