@@ -1,4 +1,6 @@
-# 2019 Pre Release
+This solution is made in python3. All three tasks are in `main.py`. Install python 3 then download the file to run.
+
+# s19_pm22
 
 In preparation for the examination, candidates should attempt the following practical tasks **by writing and testing a program or programs.**<br /><br />
 An auction company has an interactive auction board at their salerooms, which allows buyers to place bids at any time during the auction. 
