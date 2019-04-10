@@ -121,6 +121,9 @@ while WantToBid:
         BuyerNumList[list_index] = BuyerNumber
         NumBidsList[list_index] += 1
 
+    else:
+        pass
+
 # ------TASK 3------
 TotalFee = 0.0
 LessThanReservePrice = []
