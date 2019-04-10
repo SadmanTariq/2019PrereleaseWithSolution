@@ -15,10 +15,10 @@
 # # Solved by Sadman Tariq
 # # https://github.com/SadmanTariq/2019PrereleaseWithSolution
 
-# ------TASK 1------
-
 print("This solution is created by Sadman Tariq.")
 print("https://github.com/SadmanTariq/2019PrereleaseWithSolution \n")
+
+# ------TASK 1------
 
 temp_cond = True  # Temporary placeholder
 while temp_cond:
@@ -33,13 +33,13 @@ while temp_cond:
 # Lists containing different properties of auction items.
 # Dictionary would have worked better but O' Level restrictions.
 
-ItmNumList = []        # List containing item numbers
-ItmDescList = []       # List containing item desc.
-ReservePriceList = []  # List containing reserve prices
-NumBidsList = []       # List containing num. of bids
-BidList = []           # List containing highest bids
-BuyerNumList = []      # List containing buyer number of highest bidder
-SoldList = []          # List containing whether item is sold or not
+ItmNumList = []
+ItmDescList = []
+ReservePriceList = []
+NumBidsList = []       # List containing number of bids for each item
+BidList = []           # List containing highest bid for each item
+BuyerNumList = []      # List containing buyer number of highest bidders
+SoldList = []          # List containing whether each item is sold or not
 
 # Getting input.
 for i in range(numItems):
