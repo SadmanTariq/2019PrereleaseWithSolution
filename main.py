@@ -32,7 +32,6 @@ while temp_cond:
 
 # Lists containing different properties of auction items.
 # Dictionary would have worked better but O' Level restrictions.
-
 ItmNumList = []
 ItmDescList = []
 ReservePriceList = []
@@ -59,26 +58,12 @@ for i in range(numItems):
     BuyerNumList.append("")
     SoldList.append(False)
 
-# # Placeholder section; comment out for actual use
-# numItems = 10
-# ItmNumList = ['12', '11', '2452', '99', '98', '13', '15', '2252', '79', '28']
-# ItmDescList = ['Chair', 'Desk', 'Car', 'Asdf', 'Pmsa', 'Chair', 'Desk', 'Car'
-#                ,'Asdf', 'Pmsa']
-# ReservePriceList = [2200, 44930, 333331, 1213, 432, 2200, 44930,
-#                     333331, 1213, 432]
-# for i in range(numItems):
-#     NumBidsList.append(0)
-#     BidList.append(0)
-#     BuyerNumList.append('')
-#     SoldList.append(False)
-# # Placeholder end
-
 # ------TASK 2------
 
 # Print all the available items for selection using Item Number.
 print("Available items:")
 for i in range(numItems):
-    print(ItmNumList[i], ItmDescList[i], sep=" : ")
+    print(ItmNumList[i], ItmDescList[i], sep=": ")
 
 WantToBid = True  # When false; break out of loop.
 while WantToBid:
@@ -86,20 +71,20 @@ while WantToBid:
     if choice == 'n':
         WantToBid = False
 
-    elif choice == 'y':  # Only executes when WantToBid is True.
-        SelectedItm = ''
+    elif choice == 'y':
+        SelectedItem = ''  # Holds item number of selected item.
         BidAmount = 0
         BuyerNumber = ''
 
-        correct = False  # Selected item is available.
+        correct = False  # True if selected item is available.
         while not correct:
-            SelectedItm = input("Enter item number from above: ")
-            if SelectedItm in ItmNumList:
+            SelectedItem = input("Enter item number from above: ")
+            if SelectedItem in ItmNumList:
                 # Index of item from list.
-                list_index = ItmNumList.index(SelectedItm)
+                list_index = ItmNumList.index(SelectedItem)
 
                 print()
-                print(SelectedItm, ItmDescList[list_index])
+                print(SelectedItem, ItmDescList[list_index])
                 print("Highest bid: $" + str(BidList[list_index]))
 
                 correct = True
@@ -109,13 +94,13 @@ while WantToBid:
         correct = False  # Bid is correct.
         while not correct:
             BidAmount = int(input("Enter your bid: $"))
-            if BidAmount > BidList[ItmNumList.index(SelectedItm)]:
+            if BidAmount > BidList[ItmNumList.index(SelectedItem)]:
                 correct = True
             else:
                 print("Bid amount must be higher than previous bid.")
 
         BuyerNumber = input("Enter buyer number: ")
-        list_index = ItmNumList.index(SelectedItm)
+        list_index = ItmNumList.index(SelectedItem)
 
         BidList[list_index] = BidAmount
         BuyerNumList[list_index] = BuyerNumber
