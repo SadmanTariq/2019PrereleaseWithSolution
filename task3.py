@@ -45,11 +45,23 @@ for i in range(numItems):
     cond = True
     while cond:
         num = input("Enter item number: ")
-        if num not in ItmNumList:
-            ItmNumList.append(num)
-            cond = False
+        try:
+            # Check if input can be converted to integer.
+            # If it can't be converted then it contains non numbers.
+            int(num)
+
+        except ValueError:
+            print("Item number may only contain whole numbers.")
+
         else:
-            print("Item number needs to be unique.")
+            if num < 0:
+                # Negative numbers are not allowed.
+                print("Item number may only contain whole numbers.")
+            elif num in ItmNumList:
+                print("Item number needs to be unique.")
+            else:
+                ItmNumList.append(num)
+                cond = False
 
     ItmDescList.append(input("Enter item description: "))
     ReservePriceList.append(int(input("Enter reserve price: $")))
