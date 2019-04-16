@@ -62,5 +62,11 @@ for i in range(numItems):
                 cond = False
 
     ItmDescList.append(input("Enter item description: "))
-    ReservePriceList.append(int(input("Enter reserve price: $")))
+
+    reserve_price = int(input("Enter reserve price: $"))
+    while reserve_price < 0:
+        print("Reserve price must be positive. Try again.")
+        reserve_price = int(input("Enter reserve price: $"))
+
+    ReservePriceList.append(reserve_price)
     NumBidsList.append(0)
