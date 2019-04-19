@@ -21,15 +21,15 @@ print("https://github.com/SadmanTariq/2019PrereleaseWithSolution \n")
 
 # ------TASK 1------
 
-temp_cond = True  # Temporary placeholder
-while temp_cond:
+less_than_ten = True
+while less_than_ten:
     try:
         numItems = int(input("Enter amount of items to be put on aution " +
                              "(atleast 10): "))
         if numItems >= 10:
-            temp_cond = False
+            less_than_ten = False
     except ValueError:
-        print("Input can only be numbers.")
+        print("\nCan only be numbers.")
 
 # Lists containing different properties of auction items.
 # Dictionary would have worked better but O' Level restrictions.
@@ -37,11 +37,14 @@ ItmNumList = []
 ItmDescList = []
 ReservePriceList = []
 NumBidsList = []       # List containing number of bids for each item
+BidList = []           # List containing highest bid for each item
+BuyerNumList = []      # List containing buyer number of highest bidders
+SoldList = []          # List containing whether each item is sold or not
 
-# Getting input.
+# Loop for number of items times.
 for i in range(numItems):
-    cond = True
-    while cond:
+    all_input_correct = False
+    while not all_input_correct:
         num = input("Enter item number: ")
         try:
             # Check if input can be converted to integer.
@@ -52,21 +55,40 @@ for i in range(numItems):
             print("Item number may only contain whole numbers.")
 
         else:
-            if num < 0:
+            # This part only executes if num contains only numbers.
+            if int(num) < 0:
                 # Negative numbers are not allowed.
                 print("Item number may only contain whole numbers.")
             elif num in ItmNumList:
                 print("Item number needs to be unique.")
             else:
                 ItmNumList.append(num)
-                cond = False
+                all_input_correct = True
 
     ItmDescList.append(input("Enter item description: "))
 
-    reserve_price = int(input("Enter reserve price: $"))
-    while reserve_price < 0:
+    reserve_price_input = input("Enter reserve price: $")
+    is_number = False
+    # Defaults to false so that condition is checked at least once.
+    while not is_number:
+        # This part is checked repeatedly until input is valid.
+        try:
+            int(reserve_price_input)
+        except ValueError:
+            print("Reserve price may only be a positive whole number." +
+                  " Try again.")
+            reserve_price_input = input("Enter reserve price: $")
+        else:
+            # is_number is set to True only when ValueError is not raised.
+            is_number = True
+
+    # The input does not immediately get added to the reserve prices list.
+    while reserve_price_input < 0:
         print("Reserve price must be positive. Try again.")
         reserve_price = int(input("Enter reserve price: $"))
+    ReservePriceList.append(reserve_price_input)  # Add it after the checks.
 
-    ReservePriceList.append(reserve_price)
     NumBidsList.append(0)
+    BidList.append(0)
+    BuyerNumList.append("")
+    SoldList.append(False)
