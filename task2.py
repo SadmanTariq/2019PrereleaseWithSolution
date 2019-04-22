@@ -123,39 +123,47 @@ for i in range(numItems):
 WantToBid = True  # When false; break out of loop.
 while WantToBid:
     choice = input("Do you want to place a bid? (y/n): ")
+    # If the choice is 'n' then WantToBid is set to False and the elif
+    # segment does not run.
+    # If choice is 'y' then WantToBid is not modified and the elif segment
+    # is run.
+    # If choice is neither 'y' nor 'n' then nothing happens and the user is
+    # prompted again.
+
     if choice == 'n':
         WantToBid = False
 
     elif choice == 'y':
-        SelectedItem = ''  # Holds item number of selected item.
+        SelectedItem = ''  # Stores item number of selected item.
         BidAmount = 0
         BuyerNumber = ''
 
-        correct = False  # True if selected item is available.
-        while not correct:
+        item_num_correct = False  # True if selected item is available.
+        while not item_num_correct:
             SelectedItem = input("Enter item number from above: ")
             if SelectedItem in ItmNumList:
-                # Index of item from list.
-                list_index = ItmNumList.index(SelectedItem)
+                # This segment only executes if the selected item number
+                # exists in ItmNumList.
+                item_num_correct = True
 
-                print()
+                list_index = ItmNumList.index(SelectedItem)
+                print()  # Blank line
                 print(SelectedItem, ItmDescList[list_index])
                 print("Highest bid: $" + str(BidList[list_index]))
 
-                correct = True
             else:
                 print("Invalid item number; try again.")
 
-        correct = False  # Bid is correct.
-        while not correct:
+        bid_correct = False  # True if bid is higher than current highest.
+        while not bid_correct:
             BidAmount = int(input("Enter your bid: $"))
             if BidAmount > BidList[ItmNumList.index(SelectedItem)]:
-                correct = True
+                bid_correct = True
             else:
                 print("Bid amount must be higher than previous bid.")
 
         BuyerNumber = input("Enter buyer number: ")
-        list_index = ItmNumList.index(SelectedItem)
+        list_index = ItmNumList.index(SelectedItem)  # Index of item.
 
         BidList[list_index] = BidAmount
         BuyerNumList[list_index] = BuyerNumber
